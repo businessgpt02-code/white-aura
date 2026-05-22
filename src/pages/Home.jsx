@@ -99,10 +99,10 @@ const Home = () => {
                 variants={fadeUp} initial="hidden" animate="visible" custom={3}
                 className="flex flex-wrap gap-4 mb-14"
               >
-                <Link to="/contact" className="btn-primary">
+                <Link to="/contact" onClick={(e) => e.preventDefault()} className="btn-primary">
                   Book Laundry Service <ArrowRight size={18} />
                 </Link>
-                <Link to="/services" className="btn-outline">
+                <Link to="/services" onClick={(e) => e.preventDefault()} className="btn-outline">
                   View Services
                 </Link>
               </motion.div>
@@ -250,7 +250,7 @@ const Home = () => {
               Schedule your first pickup today and experience the White Aura difference — premium care, delivered to your door.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/contact" className="btn-primary">
+              <Link to="/contact" onClick={(e) => e.preventDefault()} className="btn-primary">
                 Schedule Pickup Now <ArrowRight size={18} />
               </Link>
               <a href="tel:+971502524034" className="btn-outline">

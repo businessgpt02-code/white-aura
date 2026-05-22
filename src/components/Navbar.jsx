@@ -38,24 +38,18 @@ const Navbar = () => {
         >
           <div
             className={`w-full max-w-6xl px-6 transition-all duration-500 ${
-              scrolled ? 'py-3' : 'py-5'
+              scrolled ? 'py-1.5' : 'py-3'
             } flex items-center justify-between`}
           >
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10">
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#7a9e7e] to-[#5a7a5e] shadow-lg group-hover:shadow-[#7a9e7e]/40 transition-shadow duration-300" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2C8 6 4 9 4 13a8 8 0 0016 0c0-4-4-7-8-11z" fill="white" opacity="0.9"/>
-                    <path d="M12 8C10 10 8 12 8 14a4 4 0 008 0c0-2-2-4-4-6z" fill="white" opacity="0.5"/>
-                  </svg>
-                </div>
-              </div>
-              <div className="leading-tight">
-                <span className="font-serif font-bold text-xl text-[#2d4a30] tracking-tight">White</span>
-                <span className="font-serif font-bold text-xl text-[#7a9e7e] tracking-tight"> Aura</span>
-              </div>
+            <Link to="/" className="flex items-center group">
+              <img
+                src="/logo1.png"
+                alt="White Aura"
+                className={`w-auto object-contain transition-all duration-500 group-hover:opacity-85 ${
+                  scrolled ? 'h-[64px]' : 'h-[84px]'
+                }`}
+              />
             </Link>
 
             {/* Desktop Links */}
@@ -64,6 +58,7 @@ const Navbar = () => {
                 <NavLink
                   key={link.name}
                   to={link.path}
+                  onClick={(e) => { if (link.path !== '/') e.preventDefault(); }}
                   className={({ isActive }) =>
                     `relative text-sm font-medium tracking-wide transition-colors duration-200 group ${
                       isActive ? 'text-[#5a7a5e]' : 'text-[#2d4a30]/70 hover:text-[#2d4a30]'
@@ -82,7 +77,7 @@ const Navbar = () => {
 
             {/* CTA + Hamburger */}
             <div className="flex items-center gap-4">
-              <Link to="/contact" className="hidden md:inline-flex btn-primary text-sm py-2.5 px-6">
+              <Link to="/contact" onClick={(e) => e.preventDefault()} className="hidden md:inline-flex btn-primary text-sm py-2.5 px-6">
                 Book Now
               </Link>
               <button
@@ -117,7 +112,13 @@ const Navbar = () => {
                 >
                   <NavLink
                     to={link.path}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => {
+                      if (link.path !== '/') {
+                        e.preventDefault();
+                      } else {
+                        setIsOpen(false);
+                      }
+                    }}
                     className={({ isActive }) =>
                       `font-serif text-5xl font-bold transition-colors ${isActive ? 'text-[#7a9e7e]' : 'text-[#2d4a30] hover:text-[#7a9e7e]'}`
                     }
@@ -127,7 +128,7 @@ const Navbar = () => {
                 </motion.div>
               ))}
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                <Link to="/contact" onClick={() => setIsOpen(false)} className="btn-primary mt-4">
+                <Link to="/contact" onClick={(e) => { e.preventDefault(); setIsOpen(false); }} className="btn-primary mt-4">
                   Book a Service
                 </Link>
               </motion.div>

@@ -27,13 +27,16 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 pt-20 pb-12">
-        {/* Big brand name */}
+        {/* Brand logo */}
         <div className="mb-16">
-          <p className="text-[#7a9e7e] text-xs font-medium tracking-[0.3em] uppercase mb-3">Est. 2015 · Premium Care</p>
-          <h2 className="font-serif text-6xl md:text-8xl font-bold text-[#2d4a30]/5 leading-none select-none">
-            White Aura
-          </h2>
-          <p className="text-[#2d4a30]/65 text-base max-w-md mt-4 leading-relaxed">
+          <Link to="/">
+            <img
+              src="/logo1.png"
+              alt="White Aura"
+              className="h-24 w-auto object-contain mb-4"
+            />
+          </Link>
+          <p className="text-[#2d4a30]/65 text-base max-w-md mt-2 leading-relaxed">
             Premium laundry and garment care services tailored to keep your clothes fresh, vibrant, and perfectly maintained.
           </p>
         </div>
@@ -45,7 +48,11 @@ const Footer = () => {
             <ul className="flex flex-col gap-4">
               {['Home', 'About', 'Services', 'Gallery', 'Contact'].map((page) => (
                 <li key={page}>
-                  <Link to={`/${page === 'Home' ? '' : page.toLowerCase()}`} className="text-[#2d4a30]/60 hover:text-[#7a9e7e] transition-colors text-sm group flex items-center gap-2">
+                  <Link 
+                    to={`/${page === 'Home' ? '' : page.toLowerCase()}`} 
+                    onClick={(e) => { if (page !== 'Home') e.preventDefault(); }}
+                    className="text-[#2d4a30]/60 hover:text-[#7a9e7e] transition-colors text-sm group flex items-center gap-2"
+                  >
                     <span className="w-0 h-px bg-[#7a9e7e] group-hover:w-4 transition-all duration-300 inline-block" />
                     {page}
                   </Link>
