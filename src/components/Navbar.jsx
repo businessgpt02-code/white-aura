@@ -17,8 +17,8 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Gallery', path: '/gallery', disabled: true },
+    { name: 'Contact', path: '/contact', disabled: true },
   ];
 
   return (
@@ -55,29 +55,38 @@ const Navbar = () => {
             {/* Desktop Links */}
             <nav className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
-                <NavLink
-                  key={link.name}
-                  to={link.path}
-                  onClick={(e) => { if (link.path !== '/') e.preventDefault(); }}
-                  className={({ isActive }) =>
-                    `relative text-sm font-medium tracking-wide transition-colors duration-200 group ${
-                      isActive ? 'text-[#5a7a5e]' : 'text-[#2d4a30]/70 hover:text-[#2d4a30]'
-                    }`
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      {link.name}
-                      <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#7a9e7e] rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
-                    </>
-                  )}
-                </NavLink>
+                link.disabled ? (
+                  <span
+                    key={link.name}
+                    className="relative text-sm font-medium tracking-wide text-[#2d4a30]/70 cursor-default"
+                    aria-disabled="true"
+                  >
+                    {link.name}
+                  </span>
+                ) : (
+                  <NavLink
+                    key={link.name}
+                    to={link.path}
+                    className={({ isActive }) =>
+                      `relative text-sm font-medium tracking-wide transition-colors duration-200 group ${
+                        isActive ? 'text-[#5a7a5e]' : 'text-[#2d4a30]/70 hover:text-[#2d4a30]'
+                      }`
+                    }
+                  >
+                    {({ isActive }) => (
+                      <>
+                        {link.name}
+                        <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#7a9e7e] rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                      </>
+                    )}
+                  </NavLink>
+                )
               ))}
             </nav>
 
             {/* CTA + Hamburger */}
             <div className="flex items-center gap-4">
-              <Link to="/contact" onClick={(e) => e.preventDefault()} className="hidden md:inline-flex btn-primary text-sm py-2.5 px-6">
+              <Link to="/contact" className="hidden md:inline-flex btn-primary text-sm py-2.5 px-6">
                 Book Now
               </Link>
               <button
@@ -110,25 +119,25 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.07 }}
                 >
-                  <NavLink
-                    to={link.path}
-                    onClick={(e) => {
-                      if (link.path !== '/') {
-                        e.preventDefault();
-                      } else {
-                        setIsOpen(false);
+                  {link.disabled ? (
+                    <span className="font-serif text-5xl font-bold text-[#2d4a30]" aria-disabled="true">
+                      {link.name}
+                    </span>
+                  ) : (
+                    <NavLink
+                      to={link.path}
+                      onClick={() => setIsOpen(false)}
+                      className={({ isActive }) =>
+                        `font-serif text-5xl font-bold transition-colors ${isActive ? 'text-[#7a9e7e]' : 'text-[#2d4a30] hover:text-[#7a9e7e]'}`
                       }
-                    }}
-                    className={({ isActive }) =>
-                      `font-serif text-5xl font-bold transition-colors ${isActive ? 'text-[#7a9e7e]' : 'text-[#2d4a30] hover:text-[#7a9e7e]'}`
-                    }
-                  >
-                    {link.name}
-                  </NavLink>
+                    >
+                      {link.name}
+                    </NavLink>
+                  )}
                 </motion.div>
               ))}
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                <Link to="/contact" onClick={(e) => { e.preventDefault(); setIsOpen(false); }} className="btn-primary mt-4">
+                <Link to="/contact" onClick={() => setIsOpen(false)} className="btn-primary mt-4">
                   Book a Service
                 </Link>
               </motion.div>

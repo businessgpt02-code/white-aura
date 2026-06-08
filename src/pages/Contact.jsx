@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from 'lucide-react';
+import { Phone, Mail, Clock, Send, MessageCircle } from 'lucide-react';
 import AnimatedPage from '../components/AnimatedPage';
 import SEO from '../components/SEO';
 
@@ -12,15 +12,14 @@ const fadeUp = {
 };
 
 const contactInfo = [
-  { icon: <MapPin size={20} />, label: 'Visit Us', value: '123 Fresh Lane, Clean City, CC 90210', sub: 'Find us on Google Maps →' },
-  { icon: <Phone size={20} />, label: 'Call Us', value: '+971 50 252 4034', sub: 'Mon–Sat, 8am–8pm' },
-  { icon: <Mail size={20} />, label: 'Email Us', value: 'hello@whiteaura.com', sub: 'We reply within 2 hours' },
+  { icon: <Phone size={20} />, label: 'Call Us', value: '+971 54 796 5212', sub: 'Mon–Sat, 8am–8pm' },
+  { icon: <Mail size={20} />, label: 'Email Us', value: 'connect@whiteauralaundry.com', sub: 'We reply within 2 hours' },
   { icon: <Clock size={20} />, label: 'Business Hours', value: 'Mon–Sat: 8am – 8pm', sub: 'Sunday: Closed' },
 ];
 
 const Contact = () => {
   return (
-    <AnimatedPage>
+    <AnimatedPage className="contact-page">
       <SEO
         title="Contact Us"
         description="Get in touch with White Aura Laundry Services. Book a pickup, ask about our services, or find our location."
@@ -28,23 +27,18 @@ const Contact = () => {
 
       {/* ── HEADER ── */}
       <section className="relative pt-40 pb-28 hero-gradient overflow-hidden">
-        <div className="orb orb-1" style={{ opacity: 0.3 }} />
-        <div className="orb orb-2" style={{ opacity: 0.2 }} />
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-end">
-            <motion.div variants={fadeUp} initial="hidden" animate="visible">
-              <p className="text-[#7a9e7e] text-xs font-semibold tracking-[0.3em] uppercase mb-5">Get In Touch</p>
-              <h1 className="font-serif text-6xl md:text-7xl font-bold text-[#1c2b1d] leading-[1.05]">
-                Let's Start a<br />
-                <span className="italic text-[#7a9e7e]">Conversation.</span>
-              </h1>
-            </motion.div>
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={1}>
-              <p className="text-xl text-[#2d4a30]/60 leading-relaxed max-w-lg">
-                Have a question or ready to schedule your first pickup? We're here to provide you with the best garment care experience possible.
-              </p>
-            </motion.div>
-          </div>
+        <div className="orb orb-1" style={{ opacity: 0.25 }} />
+        <div className="max-w-7xl mx-auto px-6 md:px-8 text-center">
+          <motion.div variants={fadeUp} initial="hidden" animate="visible">
+            <p className="text-[#7a9e7e] text-xs font-semibold tracking-[0.3em] uppercase mb-5">Contact Us</p>
+            <h1 className="font-serif text-6xl md:text-8xl font-bold text-[#1c2b1d] leading-[1.05]">
+              Let's Talk<br />
+              <span className="italic text-[#7a9e7e]">Laundry Care.</span>
+            </h1>
+            <p className="text-xl text-[#2d4a30]/60 leading-relaxed mt-8 max-w-2xl mx-auto">
+              Book a pickup, ask about our services, or send us a message. We are here to help keep every garment fresh.
+            </p>
+          </motion.div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -82,25 +76,9 @@ const Contact = () => {
                 </motion.div>
               ))}
 
-              {/* Map Placeholder */}
-              <motion.div
-                variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0.5}
-                className="premium-card overflow-hidden flex-1 relative" style={{ minHeight: '200px' }}
-              >
-                <div className="absolute inset-0 section-gradient flex flex-col items-center justify-center">
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center mb-3"
-                    style={{ background: 'linear-gradient(135deg, #7a9e7e, #5a7a5e)' }}>
-                    <MapPin size={28} color="white" />
-                  </div>
-                  <p className="font-serif text-lg font-bold text-[#1c2b1d] mb-1">Find Us Here</p>
-                  <p className="text-xs text-[#2d4a30]/50">123 Fresh Lane, Clean City</p>
-                  <a href="#" className="mt-4 text-[#7a9e7e] text-sm font-medium hover:underline">Open in Google Maps →</a>
-                </div>
-              </motion.div>
-
               {/* WhatsApp CTA */}
               <motion.a
-                href="https://wa.me/971502524034"
+                href="https://wa.me/971547965212"
                 target="_blank"
                 rel="noreferrer"
                 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0.6}
@@ -164,7 +142,7 @@ const Contact = () => {
                     <label className="text-[#a8c5aa]/60 text-xs font-medium tracking-widest uppercase">Phone Number</label>
                     <input
                       type="tel"
-                      placeholder="+971 50 252 4034"
+                      placeholder="+971 54 796 5212"
                       className="bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm focus:outline-none focus:border-[#7a9e7e] transition-all"
                     />
                   </div>
@@ -224,8 +202,8 @@ const Contact = () => {
             <p className="text-[#2d4a30]/60 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
               Over 2,000 customers trust White Aura to care for their most cherished garments. Join the family today.
             </p>
-            <a href="tel:+971502524034" className="btn-primary inline-flex">
-              Call to Book: +971 50 252 4034
+            <a href="tel:+971547965212" className="btn-primary inline-flex">
+              Call to Book: +971 54 796 5212
             </a>
           </motion.div>
         </div>

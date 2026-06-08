@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Postea';
+  src: url('../font/Postea-Semibold (1).OTF') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Urbane Rounded';
+  src: url('../font/UrbaneRounded-Medium (1).ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Brand Colors */
   --color-sage: #7a9e7e;
@@ -45,6 +61,22 @@ body {
 
 h1, h2, h3, .font-serif {
   font-family: var(--font-serif);
+}
+
+.home-page,
+.about-page,
+.services-page,
+.gallery-page,
+.contact-page {
+  font-family: 'Urbane Rounded', var(--font-sans);
+}
+
+.home-page :is(h1, h2, h3, h4, h5, h6),
+.about-page :is(h1, h2, h3, h4, h5, h6),
+.services-page :is(h1, h2, h3, h4, h5, h6),
+.gallery-page :is(h1, h2, h3, h4, h5, h6),
+.contact-page :is(h1, h2, h3, h4, h5, h6) {
+  font-family: 'Postea', Georgia, serif;
 }
 
 /* ==================== PREMIUM UTILITIES ==================== */
@@ -258,9 +290,13 @@ h1, h2, h3, .font-serif {
 /* ==================== MARQUEE ==================== */
 .marquee-track {
   display: flex;
-  gap: 3rem;
-  animation: marquee 25s linear infinite;
+  gap: 2.5rem;
+  animation: marquee 35s linear infinite;
   width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 @keyframes marquee {

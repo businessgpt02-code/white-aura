@@ -36,7 +36,7 @@ const Gallery = () => {
   };
 
   return (
-    <AnimatedPage>
+    <AnimatedPage className="gallery-page">
       <SEO title="Gallery" description="Explore the White Aura Laundry Services gallery — our facilities, premium results, and service in action." />
 
       {/* ── HEADER ── */}

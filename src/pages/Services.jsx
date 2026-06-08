@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Wind, Shirt, Zap, ShieldAlert, Truck, Bed, Sparkles, Clock, ArrowRight } from 'lucide-react';
+import { Wind, Shirt, Zap, ShieldAlert, Truck, Bed, Sparkles, Clock, ArrowRight, CheckCircle } from 'lucide-react';
 import AnimatedPage from '../components/AnimatedPage';
 import SEO from '../components/SEO';
 
@@ -31,7 +31,7 @@ const services = [
     title: 'Ironing & Pressing',
     desc: 'Crisp, wrinkle-free pressing with industrial steam irons to keep you looking sharp and professional.',
     icon: <Zap size={32} />,
-    img: 'https://images.unsplash.com/photo-1596755490453-61a7c5b651bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    img: '/service-ironing-pressing.png',
     tag: 'Quick'
   },
   {
@@ -52,7 +52,7 @@ const services = [
     title: 'Bedsheets & Curtains',
     desc: 'Deep cleaning for large household items to keep your home environment fresh, hygienic, and inviting.',
     icon: <Bed size={32} />,
-    img: 'https://images.unsplash.com/photo-1582735689146-281b378a5b8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    img: '/service-bedsheets-curtains.png',
     tag: 'Home Care'
   },
   {
@@ -66,33 +66,197 @@ const services = [
     title: 'Express Service',
     desc: 'Need it urgently? Our express turnaround ensures your garments are cleaned and returned in under 24 hours.',
     icon: <Clock size={32} />,
-    img: 'https://images.unsplash.com/photo-1551836022-b06b1b27b43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    img: '/service-express.png',
     tag: '24hrs'
   },
 ];
 
+const servicesBreadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.whiteaura.ae/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Laundry and Dry Cleaning Services Dubai',
+      item: 'https://www.whiteaura.ae/services',
+    },
+  ],
+};
+
+const servicesPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': 'https://www.whiteaura.ae/services#services-page',
+  url: 'https://www.whiteaura.ae/services',
+  name: 'Laundry and Dry Cleaning Services in Dubai',
+  headline: 'Premium Laundry, Dry Cleaning, Ironing, Stain Removal, and Pickup Delivery Services in Dubai',
+  description: 'Explore White Aura laundry and dry cleaning services in Dubai including washing and folding, premium dry cleaning, ironing and pressing, stain removal, pickup and delivery, bedsheet and curtain cleaning, luxury garment care, and express 24-hour service.',
+  image: 'https://www.whiteaura.ae/laundry.png',
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': 'https://www.whiteaura.ae/#website',
+  },
+  about: {
+    '@type': 'LocalBusiness',
+    '@id': 'https://www.whiteaura.ae/#business',
+    name: 'White Aura Laundry Services',
+    telephone: '+971502524034',
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Dubai',
+      addressCountry: 'AE',
+    },
+  },
+};
+
+const servicesOfferCatalogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  '@id': 'https://www.whiteaura.ae/services#offer-catalog',
+  name: 'White Aura Laundry and Dry Cleaning Services',
+  itemListElement: services.map((service, index) => ({
+    '@type': 'Offer',
+    position: index + 1,
+    itemOffered: {
+      '@type': 'Service',
+      name: `${service.title} in Dubai`,
+      description: service.desc,
+      serviceType: service.title,
+      image: service.img,
+      provider: {
+        '@type': 'LocalBusiness',
+        '@id': 'https://www.whiteaura.ae/#business',
+        name: 'White Aura Laundry Services',
+      },
+      areaServed: {
+        '@type': 'City',
+        name: 'Dubai',
+      },
+    },
+  })),
+};
+
+const servicesHeroSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://www.whiteaura.ae/services#premium-laundry-dry-cleaning',
+  name: 'Premium Laundry and Dry Cleaning Services in Dubai',
+  serviceType: 'Laundry, dry cleaning, ironing, stain removal, garment care, pickup and delivery',
+  description: 'Premium laundry and dry cleaning services in Dubai with washing and folding, dry cleaning, steam ironing, stain removal, bedsheet and curtain cleaning, luxury garment care, express 24-hour service, and door-to-door pickup and delivery.',
+  provider: {
+    '@type': 'LocalBusiness',
+    '@id': 'https://www.whiteaura.ae/#business',
+    name: 'White Aura Laundry Services',
+    telephone: '+971502524034',
+  },
+  areaServed: [
+    'Dubai',
+    'Dubai Marina',
+    'Palm Jumeirah',
+    'Downtown Dubai',
+    'JBR',
+    'Business Bay',
+    'JLT',
+    'Dubai Hills',
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Premium Fabric Care Services',
+    itemListElement: services.map((service) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: service.title,
+        description: service.desc,
+      },
+    })),
+  },
+};
+
+const servicesCtaSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://www.whiteaura.ae/services#book-service-consultation',
+  name: 'Laundry and Dry Cleaning Service Guidance in Dubai',
+  serviceType: 'Laundry service recommendation, dry cleaning guidance, garment care consultation, pickup and delivery booking',
+  description: 'White Aura helps Dubai customers choose the right laundry, dry cleaning, ironing, stain removal, curtain cleaning, express laundry, or garment care service before booking pickup and delivery.',
+  provider: {
+    '@type': 'LocalBusiness',
+    '@id': 'https://www.whiteaura.ae/#business',
+    name: 'White Aura Laundry Services',
+    telephone: '+971502524034',
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'Dubai',
+  },
+  potentialAction: {
+    '@type': 'ContactAction',
+    name: 'Get a laundry service recommendation',
+    target: 'https://www.whiteaura.ae/contact',
+  },
+};
+
 const Services = () => {
   return (
-    <AnimatedPage>
-      <SEO title="Our Services" description="Explore White Aura's premium laundry services — washing, dry cleaning, ironing, stain removal, and more." />
+    <AnimatedPage className="services-page">
+      <SEO
+        title="Laundry and Dry Cleaning Services Dubai"
+        description="Explore White Aura's premium laundry and dry cleaning services in Dubai: washing and folding, dry cleaning, ironing, stain removal, pickup delivery, curtains, bedsheets, luxury garment care, and express 24-hour service."
+        keywords="laundry services Dubai, dry cleaning services Dubai, laundry pickup delivery Dubai, washing folding Dubai, ironing pressing Dubai, stain removal Dubai, express laundry Dubai, curtain cleaning Dubai, premium garment care Dubai"
+        canonical="https://www.whiteaura.ae/services"
+        ogImage="https://www.whiteaura.ae/laundry.png"
+        schema={[servicesBreadcrumbSchema, servicesPageSchema, servicesOfferCatalogSchema, servicesHeroSchema, servicesCtaSchema]}
+      />
 
       {/* ── HEADER ── */}
-      <section className="relative pt-40 pb-24 hero-gradient overflow-hidden">
+      <section
+        id="services-hero"
+        className="relative pt-28 pb-14 hero-gradient overflow-hidden"
+        aria-labelledby="services-hero-heading"
+        itemScope
+        itemType="https://schema.org/Service"
+      >
+        <meta itemProp="name" content="Premium Laundry and Dry Cleaning Services in Dubai" />
+        <meta itemProp="serviceType" content="Laundry, dry cleaning, ironing, stain removal, garment care, pickup and delivery" />
+        <meta itemProp="description" content="Premium laundry and dry cleaning services in Dubai with washing, folding, dry cleaning, steam ironing, stain removal, bedsheet and curtain cleaning, express service, and pickup delivery." />
+        <meta itemProp="areaServed" content="Dubai" />
+        <meta itemProp="provider" content="White Aura Laundry Services" />
         <div className="orb orb-2" style={{ opacity: 0.3 }} />
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
             <motion.div variants={fadeUp} initial="hidden" animate="visible">
-              <p className="text-[#7a9e7e] text-xs font-semibold tracking-[0.3em] uppercase mb-5">What We Offer</p>
-              <h1 className="font-serif text-6xl md:text-7xl font-bold text-[#1c2b1d] leading-[1.05]">
-                Premium Care<br />
-                <span className="italic text-[#7a9e7e]">for Every</span><br />
-                Fabric.
+              <p className="text-[#7a9e7e] text-xs font-semibold tracking-[0.3em] uppercase mb-5">Laundry Services Dubai</p>
+              <h1
+                id="services-hero-heading"
+                className="font-serif text-6xl md:text-7xl font-bold text-[#1c2b1d] leading-[1.05]"
+                itemProp="name"
+              >
+                Laundry &amp;<br />
+                <span className="italic text-[#7a9e7e]">Dry Cleaning</span><br />
+                Services Dubai.
               </h1>
             </motion.div>
             <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={1}>
-              <p className="text-xl text-[#2d4a30]/60 leading-relaxed">
-                From everyday essentials to your most cherished garments, our comprehensive services guarantee impeccable results every single time.
+              <p className="text-xl text-[#2d4a30]/60 leading-relaxed" itemProp="description">
+                Explore White Aura's premium laundry and dry cleaning services in Dubai, including washing and folding, dry cleaning, steam ironing, stain removal, pickup and delivery, bedsheets, curtains, luxury garment care, and express 24-hour service.
               </p>
+              <ul className="mt-6 grid sm:grid-cols-2 gap-3 text-sm font-medium text-[#2d4a30]/70" aria-label="White Aura service highlights">
+                {['Free pickup and delivery', 'Express 24-hour service', 'Premium garment care', 'Eco-friendly fabric treatment'].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle size={17} className="text-[#7a9e7e] shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
               <Link to="/contact" className="btn-primary inline-flex mt-8">
                 Book a Service <ArrowRight size={18} />
               </Link>
@@ -107,7 +271,7 @@ const Services = () => {
       </section>
 
       {/* ── SERVICES GRID ── */}
-      <section className="py-24 bg-white">
+      <section className="pt-24 pb-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, idx) => (
@@ -163,9 +327,9 @@ const Services = () => {
       </section>
 
       {/* ── PROCESS ── */}
-      <section className="py-32 section-gradient relative overflow-hidden">
+      <section className="pt-12 pb-10 section-gradient relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-20">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-14">
             <p className="text-[#7a9e7e] text-xs font-semibold tracking-[0.3em] uppercase mb-4">The Process</p>
             <h2 className="font-serif text-5xl md:text-6xl font-bold text-[#1c2b1d]">
               Effortlessly <span className="italic text-[#7a9e7e]">Simple.</span>
@@ -200,17 +364,40 @@ const Services = () => {
       </section>
 
       {/* ── BOTTOM CTA ── */}
-      <section className="py-24 section-gradient relative overflow-hidden">
+      <section
+        id="book-service-consultation"
+        className="py-14 section-gradient relative overflow-hidden"
+        aria-labelledby="services-cta-heading"
+        itemScope
+        itemType="https://schema.org/Service"
+      >
+        <meta itemProp="name" content="Laundry and Dry Cleaning Service Guidance in Dubai" />
+        <meta itemProp="serviceType" content="Laundry service recommendation, dry cleaning guidance, garment care consultation, pickup and delivery booking" />
+        <meta itemProp="areaServed" content="Dubai" />
+        <meta itemProp="provider" content="White Aura Laundry Services" />
+        <meta itemProp="keywords" content="laundry service Dubai, dry cleaning Dubai, garment care Dubai, laundry pickup delivery Dubai, express laundry Dubai" />
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #2d4a30 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#7a9e7e]/30 to-transparent" />
         <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#1c2b1d] mb-6">
-              Not Sure Which Service You Need?
+            <p className="text-[#7a9e7e] text-xs font-semibold tracking-[0.3em] uppercase mb-4">Service Guidance in Dubai</p>
+            <h2
+              id="services-cta-heading"
+              className="font-serif text-4xl md:text-5xl font-bold text-[#1c2b1d] mb-6"
+              itemProp="headline"
+            >
+              Choose the Right Laundry or Dry Cleaning Service
             </h2>
-            <p className="text-[#2d4a30]/60 text-lg mb-10">Our experts are happy to guide you. Reach out and we'll recommend the perfect care plan for your garments.</p>
-            <Link to="/contact" className="btn-primary">
-              Get in Touch <ArrowRight size={18} />
+            <p className="text-[#2d4a30]/60 text-lg mb-10" itemProp="description">
+              Tell us what you need cleaned, and our Dubai garment care team will recommend the best option: washing and folding, premium dry cleaning, ironing, stain removal, curtain cleaning, express service, or door-to-door pickup and delivery.
+            </p>
+            <Link
+              to="/contact"
+              className="btn-primary"
+              aria-label="Get a laundry and dry cleaning service recommendation in Dubai"
+              itemProp="url"
+            >
+              Get Service Recommendation <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>

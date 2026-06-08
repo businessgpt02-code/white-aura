@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
@@ -48,11 +48,7 @@ const Footer = () => {
             <ul className="flex flex-col gap-4">
               {['Home', 'About', 'Services', 'Gallery', 'Contact'].map((page) => (
                 <li key={page}>
-                  <Link 
-                    to={`/${page === 'Home' ? '' : page.toLowerCase()}`} 
-                    onClick={(e) => { if (page !== 'Home') e.preventDefault(); }}
-                    className="text-[#2d4a30]/60 hover:text-[#7a9e7e] transition-colors text-sm group flex items-center gap-2"
-                  >
+                  <Link to={`/${page === 'Home' ? '' : page.toLowerCase()}`} className="text-[#2d4a30]/60 hover:text-[#7a9e7e] transition-colors text-sm group flex items-center gap-2">
                     <span className="w-0 h-px bg-[#7a9e7e] group-hover:w-4 transition-all duration-300 inline-block" />
                     {page}
                   </Link>
@@ -75,17 +71,13 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <h4 className="text-[#1c2b1d] text-xs font-semibold tracking-[0.2em] uppercase mb-6">Contact</h4>
             <ul className="flex flex-col gap-5">
-              <li className="flex items-start gap-3 text-[#2d4a30]/60 text-sm">
-                <MapPin size={16} className="text-[#7a9e7e] mt-0.5 shrink-0" />
-                123 Fresh Lane, Clean City, CC 90210
-              </li>
               <li className="flex items-center gap-3 text-[#2d4a30]/60 text-sm">
                 <Phone size={16} className="text-[#7a9e7e] shrink-0" />
-                +971 50 252 4034
+                +971 54 796 5212
               </li>
               <li className="flex items-center gap-3 text-[#2d4a30]/60 text-sm">
                 <Mail size={16} className="text-[#7a9e7e] shrink-0" />
-                hello@whiteaura.com
+                connect@whiteauralaundry.com
               </li>
             </ul>
             <div className="flex gap-3 mt-8">
