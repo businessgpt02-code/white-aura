@@ -87,32 +87,27 @@ const process = [
 
 const testimonials = [
   {
-    name: 'Sarah K.',
-    role: 'Dubai Marina Resident',
+    name: 'Priya N.',
     content: 'White Aura has completely transformed how I handle my dry cleaning. The free pickup and delivery is incredibly convenient, and the quality is always outstanding.',
     rating: 5
   },
   {
-    name: 'Faisal H.',
-    role: 'Business Owner',
+    name: 'James W.',
     content: 'Their express service is a lifesaver. I got my designer suits back in pristine condition within 24 hours. The eco-friendly solvents also give me peace of mind.',
     rating: 5
   },
   {
-    name: 'Emily R.',
-    role: 'Palm Jumeirah Resident',
+    name: 'Mariam Al F.',
     content: 'The attention to detail is superb. They treated my delicate wedding dress with absolute perfection. I couldn\'t be happier with the results.',
     rating: 5
   },
   {
-    name: 'Marcus T.',
-    role: 'Tech Consultant',
+    name: 'Michael B.',
     content: 'Best laundry service in Dubai! The steam ironing is perfect, and the customer service team is highly responsive on WhatsApp.',
     rating: 5
   },
   {
-    name: 'Amna A.',
-    role: 'Creative Director',
+    name: 'Aisha K.',
     content: 'Very professional team and highly competitive rates for premium fabric care. The door-to-door convenience saves me hours every week.',
     rating: 5
   }
@@ -697,7 +692,6 @@ const Home = () => {
                 <div className="border-t border-[#f0f8f0] pt-4 mt-auto">
                   <div itemProp="author" itemScope itemType="https://schema.org/Person">
                     <h4 className="font-serif font-bold text-base text-[#1c2b1d]" itemProp="name">{t.name}</h4>
-                    <p className="text-xs text-[#2d4a30]/50 font-medium">{t.role}</p>
                   </div>
                 </div>
               </div>
