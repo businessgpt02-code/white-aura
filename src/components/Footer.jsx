@@ -26,22 +26,22 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 pt-20 pb-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 pt-10 pb-10">
         {/* Brand logo */}
-        <div className="mb-16">
+        <div className="mb-8">
           <Link to="/">
             <img
               src="/logo1.png"
               alt="White Aura"
-              className="h-24 w-auto object-contain mb-4"
+              className="h-20 w-auto object-contain mb-2"
             />
           </Link>
-          <p className="text-[#2d4a30]/65 text-base max-w-md mt-2 leading-relaxed">
+          <p className="text-[#2d4a30]/65 text-base max-w-md leading-relaxed">
             Premium laundry and garment care services tailored to keep your clothes fresh, vibrant, and perfectly maintained.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 border-t border-[#c8dfc9] pt-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 border-t border-[#c8dfc9] pt-8 mb-10">
           {/* Quick Links */}
           <div>
             <h4 className="text-[#1c2b1d] text-xs font-semibold tracking-[0.2em] uppercase mb-6">Navigation</h4>

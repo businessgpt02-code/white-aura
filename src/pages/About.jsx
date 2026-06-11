@@ -405,9 +405,9 @@ const About = () => {
               <div className="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-2xl bg-[#fdfcf8]">
                 <motion.img
                   style={{ y: imageY }}
-                  src="/who.png"
+                  src="/whoweare.png"
                   alt="Premium laundry facility"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                   itemProp="image"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1c2b1d]/50 via-transparent to-transparent" />
@@ -488,7 +488,7 @@ const About = () => {
         itemType="https://schema.org/AboutPage"
       >
         <meta itemProp="name" content="White Aura Laundry Mission and Vision" />
-        <meta itemProp="description" content="White Aura's mission and vision for premium laundry, dry cleaning, eco-friendly garment care, and door-to-door pickup and delivery in Dubai." />
+        <meta itemProp="description" content="White Aura's mission and vision for everyday laundry, dry cleaning, eco-friendly garment care, and door-to-door pickup and delivery in Dubai." />
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="max-w-3xl mx-auto text-center mb-10">
             <p className="text-[#7a9e7e] text-xs font-semibold tracking-[0.3em] uppercase mb-4">Our Purpose</p>
@@ -496,7 +496,7 @@ const About = () => {
               id="mission-vision-heading"
               className="font-serif text-4xl md:text-5xl font-bold text-[#1c2b1d] leading-tight"
             >
-              Mission and Vision for <span className="italic text-[#7a9e7e]">Premium Laundry in Dubai</span>
+              Mission and Vision for <span className="italic text-[#7a9e7e]">Everyday Laundry in Dubai</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -512,10 +512,10 @@ const About = () => {
               {
                 label: 'Our Vision',
                 icon: '◈',
-                heading: "To become Dubai's most reliable name for modern, sustainable fabric care.",
-                seoDesc: 'Our vision is to set a higher standard for garment care in Dubai by combining eco-friendly cleaning methods, consistent quality checks, express laundry options, and customer-first pickup and delivery for every order.',
+                heading: "To take Dubai's day-to-day laundry needs off customers' hands.",
+                seoDesc: 'Our vision is to take day-to-day laundry needs off every customer\'s hands with reliable, affordable, eco-friendly cleaning, consistent quality checks, express laundry options, and customer-first pickup and delivery.',
                 meta: 'Vision for sustainable fabric care and laundry pickup delivery in Dubai',
-                desc: "We envision a world where every individual can confidently present their best self, supported by a laundry partner who treats every item like it's irreplaceable."
+                desc: "We envision White Aura as the laundry partner that takes everyday washing, ironing, and garment care off your hands, making reliable service accessible for families, professionals, and the wider community, not only premium customers."
               }
             ].map((item, i) => (
               <motion.div

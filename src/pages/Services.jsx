@@ -45,7 +45,7 @@ const services = [
     title: 'Pickup & Delivery',
     desc: 'Hassle-free, scheduled door-to-door collection and delivery service that fits your busy lifestyle.',
     icon: <Truck size={32} />,
-    img: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    img: '/service-pickup-delivery.png',
     tag: 'Free'
   },
   {
@@ -66,7 +66,7 @@ const services = [
     title: 'Express Service',
     desc: 'Need it urgently? Our express turnaround ensures your garments are cleaned and returned in under 24 hours.',
     icon: <Clock size={32} />,
-    img: '/service-express.png',
+    img: '/express.png',
     tag: '24hrs'
   },
 ];

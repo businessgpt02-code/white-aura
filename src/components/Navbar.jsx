@@ -18,7 +18,7 @@ const Navbar = () => {
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Gallery', path: '/gallery', disabled: true },
-    { name: 'Contact', path: '/contact', disabled: true },
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -86,9 +86,14 @@ const Navbar = () => {
 
             {/* CTA + Hamburger */}
             <div className="flex items-center gap-4">
-              <Link to="/contact" className="hidden md:inline-flex btn-primary text-sm py-2.5 px-6">
+              <a
+                href="https://wa.me/971547965212"
+                target="_blank"
+                rel="noreferrer"
+                className="hidden md:inline-flex btn-primary text-sm py-2.5 px-6"
+              >
                 Book Now
-              </Link>
+              </a>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white/60 backdrop-blur-sm border border-white/40 text-[#2d4a30] hover:bg-white transition-colors"
@@ -137,9 +142,15 @@ const Navbar = () => {
                 </motion.div>
               ))}
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                <Link to="/contact" onClick={() => setIsOpen(false)} className="btn-primary mt-4">
+                <a
+                  href="https://wa.me/971547965212"
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="btn-primary mt-4"
+                >
                   Book a Service
-                </Link>
+                </a>
               </motion.div>
             </div>
           </motion.div>
