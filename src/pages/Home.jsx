@@ -427,8 +427,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 
           {/* ── Section heading ── */}
-          <motion.header
-            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+          <header
             className="text-center mb-16"
           >
             <p className="text-[#7a9e7e] text-xs font-semibold tracking-[0.3em] uppercase mb-4">
@@ -445,7 +444,7 @@ const Home = () => {
               White Aura delivers reliable, hygienic, and high-quality fabric care solutions for homes and businesses across Dubai —
               from everyday laundry to specialist garment treatment.
             </p>
-          </motion.header>
+          </header>
 
           {/* ── Services grid ── */}
           <ol
@@ -456,13 +455,8 @@ const Home = () => {
             {services.map((svc, i) => {
               const Icon = svc.icon;
               return (
-                <motion.li
+                <li
                   key={svc.slug}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: '-60px' }}
-                  custom={i * 0.08}
                   itemScope
                   itemType="https://schema.org/Service"
                   itemProp="item"
@@ -513,7 +507,7 @@ const Home = () => {
                       </Link>
                     </div>
                   </div>
-                </motion.li>
+                </li>
               );
             })}
           </ol>

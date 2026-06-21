@@ -93,7 +93,7 @@ const Gallery = () => {
       </section>
 
       {/* ── FILTER TABS ── */}
-      <section className="bg-white pt-8 pb-4 sticky top-[72px] z-40 border-b border-[#e4f0e4]/50 shadow-sm">
+      <section className="bg-white pt-8 pb-4 sticky top-[72px] z-30 border-b border-[#e4f0e4]/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="flex overflow-x-auto no-scrollbar justify-start md:justify-center gap-3 pb-2">
             {categories.map((cat) => (

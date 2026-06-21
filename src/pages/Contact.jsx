@@ -168,7 +168,7 @@ const Contact = () => {
   };
 
   return (
-    <AnimatedPage className="contact-page">
+    <div className="contact-page">
       <SEO
         title="B2B Commercial Laundry Services Dubai"
         description="Contact White Aura for B2B commercial laundry services in Dubai, including staff uniforms, hospitality linens, towels, dry cleaning, ironing, and scheduled business pickup."
@@ -193,7 +193,7 @@ const Contact = () => {
         <div className="absolute inset-0 bg-[#e4f0e4]/20" aria-hidden="true" />
         <div className="orb orb-1" style={{ opacity: 0.18 }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 text-center">
-          <motion.div variants={fadeUp} initial="hidden" animate="visible">
+          <div>
             <p className="text-[#7a9e7e] text-xs font-semibold tracking-[0.3em] uppercase mb-5">B2B Laundry Enquiries</p>
             <h1
               id="contact-hero-heading"
@@ -213,7 +213,7 @@ const Contact = () => {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -228,15 +228,13 @@ const Contact = () => {
           <div className="grid gap-8">
 
             {/* ── LEFT: Info + Map ── */}
-            <motion.div
-              variants={fadeUp} initial="hidden" animate="visible" custom={0.2}
+            <div
               className="order-2 grid md:grid-cols-2 gap-6"
             >
               {/* Contact cards */}
               {contactInfo.map((info, idx) => (
-                <motion.div
+                <div
                   key={idx}
-                  variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx * 0.1}
                   className="premium-card p-6 flex items-start gap-4 group"
                 >
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 text-[#5a7a5e] group-hover:scale-110 transition-transform"
@@ -247,27 +245,24 @@ const Contact = () => {
                     <p className="text-xs text-[#7a9e7e] font-semibold tracking-widest uppercase mb-1">{info.label}</p>
                     <p className="font-semibold text-[#1c2b1d] text-sm">{info.value}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
 
               {/* WhatsApp CTA */}
-              <motion.a
+              <a
                 href="https://wa.me/971547965212"
                 target="_blank"
                 rel="noreferrer"
-                variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0.6}
-                whileHover={{ scale: 1.02 }}
-                className="flex items-center justify-center gap-3 py-4 px-6 rounded-2xl font-bold text-white shadow-xl transition-all md:col-span-2"
+                className="flex items-center justify-center gap-3 py-4 px-6 rounded-2xl font-bold text-white shadow-xl transition-all md:col-span-2 hover:scale-[1.02] duration-300"
                 style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
               >
                 <MessageCircle size={22} />
                 Chat on WhatsApp
-              </motion.a>
-            </motion.div>
+              </a>
+            </div>
 
             {/* ── RIGHT: Form ── */}
-            <motion.div
-              variants={fadeUp} initial="hidden" animate="visible" custom={0.3}
+            <div
               className="order-1 relative overflow-hidden rounded-[2.5rem] p-10 md:p-14 border border-[#c8dfc9]/70 shadow-xl"
               style={{ background: 'linear-gradient(135deg, #eef7ee 0%, #dceedd 100%)' }}
             >
@@ -385,19 +380,17 @@ const Contact = () => {
                       />
                     </div>
 
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="btn-primary w-full justify-center mt-2"
+                    <button
+                      className="btn-primary w-full justify-center mt-2 hover:scale-[1.02] active:scale-[0.98] duration-300"
                       type="submit"
                       disabled={status.submitting}
                     >
                       {status.submitting ? 'Sending...' : 'Send Message'} <Send size={18} />
-                    </motion.button>
+                    </button>
                   </form>
                 )}
               </div>
-            </motion.div>
+            </div>
 
           </div>
         </div>
@@ -406,7 +399,7 @@ const Contact = () => {
       {/* ── FINAL CTA ── */}
       <section className="pt-10 pb-10 section-gradient">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+          <div>
             <p className="text-[#7a9e7e] text-xs font-semibold tracking-[0.3em] uppercase mb-5">Business Laundry Partners</p>
             <h2 className="font-serif text-5xl md:text-6xl font-bold text-[#1c2b1d] mb-6">
               Experience the<br />
@@ -418,10 +411,10 @@ const Contact = () => {
             <a href="tel:+971547965212" className="btn-primary inline-flex">
               Request a Business Quote: +971 54 796 5212
             </a>
-          </motion.div>
+          </div>
         </div>
       </section>
-    </AnimatedPage>
+    </div>
   );
 };
 
