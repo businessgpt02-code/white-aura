@@ -552,7 +552,7 @@ const Home = () => {
                   Join 2,000+ satisfied Dubai customers and discover why White Aura is the city's most trusted laundry &amp; dry cleaning service.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+              <div className="flex flex-col sm:flex-row gap-3 shrink-0">
                 <Link
                   to="/contact"
                   aria-label="Book a laundry or dry cleaning service"
@@ -561,9 +561,16 @@ const Home = () => {
                   Book a Service <ArrowRight size={17} aria-hidden="true" />
                 </Link>
                 <Link
+                  to="/gallery"
+                  aria-label="View our premium cleaning transformations gallery"
+                  className="btn-outline border-[#7a9e7e] text-[#5a7a5e] hover:bg-[#7a9e7e] hover:text-white"
+                >
+                  View Gallery
+                </Link>
+                <Link
                   to="/services"
                   aria-label="View all laundry and dry cleaning services"
-                  className="btn-outline"
+                  className="btn-outline hidden lg:inline-flex"
                 >
                   All Services
                 </Link>

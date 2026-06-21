@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Phone } from 'lucide-react';
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -67,25 +67,41 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div className="lg:col-span-2">
-            <h4 className="text-[#1c2b1d] text-xs font-semibold tracking-[0.2em] uppercase mb-6">Contact</h4>
-            <ul className="flex flex-col gap-5">
-              <li className="flex items-center gap-3 text-[#2d4a30]/60 text-sm">
-                <Phone size={16} className="text-[#7a9e7e] shrink-0" />
-                +971 54 796 5212
-              </li>
-              <li className="flex items-center gap-3 text-[#2d4a30]/60 text-sm">
-                <Mail size={16} className="text-[#7a9e7e] shrink-0" />
-                connect@whiteauralaundry.com
-              </li>
-            </ul>
-            <div className="flex gap-3 mt-8">
-              {[FaFacebook, FaInstagram, FaTwitter].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full border border-[#c8dfc9] flex items-center justify-center text-[#2d4a30]/60 hover:border-[#7a9e7e] hover:text-[#7a9e7e] transition-all duration-300 hover:scale-110">
-                  <Icon size={16} />
-                </a>
-              ))}
+          {/* Contact & Social */}
+          <div className="lg:col-span-2 grid sm:grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-[#1c2b1d] text-xs font-semibold tracking-[0.2em] uppercase mb-6">Contact</h4>
+              <ul className="flex flex-col gap-5">
+                <li className="flex items-center gap-3 text-[#2d4a30]/60 text-sm">
+                  <Phone size={16} className="text-[#7a9e7e] shrink-0" />
+                  +971 54 796 5212
+                </li>
+                <li className="flex items-center gap-3 text-[#2d4a30]/60 text-sm">
+                  <Mail size={16} className="text-[#7a9e7e] shrink-0" />
+                  connect@whiteauralaundry.com
+                </li>
+              </ul>
+            </div>
+            
+            <div className="flex flex-col justify-end">
+              <a 
+                href="https://www.instagram.com/whiteaura_ae/" 
+                target="_blank" 
+                rel="noreferrer"
+                className="glass-sage border border-[#7a9e7e]/20 p-5 rounded-2xl flex flex-col justify-between hover:border-[#7a9e7e]/50 hover:bg-[#7a9e7e]/10 transition-all duration-300 group shadow-sm hover:scale-[1.02] h-full"
+                aria-label="Follow us on Instagram"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-[#7a9e7e]/20 flex items-center justify-center text-[#7a9e7e] transition-transform duration-300 group-hover:rotate-12">
+                    <FaInstagram size={20} />
+                  </div>
+                  <span className="text-[10px] text-[#7a9e7e] font-bold tracking-widest uppercase bg-white/60 px-2.5 py-1 rounded-full border border-[#7a9e7e]/10">Instagram</span>
+                </div>
+                <div>
+                  <h5 className="font-serif font-bold text-lg text-[#1c2b1d] mb-1">@whiteaura_ae</h5>
+                  <p className="text-xs text-[#2d4a30]/60 leading-normal">Follow us for premium laundry tips, stories, and behind-the-scenes transformations.</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>

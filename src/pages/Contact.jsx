@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Send, MessageCircle } from 'lucide-react';
 import AnimatedPage from '../components/AnimatedPage';
@@ -12,8 +13,8 @@ const fadeUp = {
 };
 
 const contactInfo = [
-  { icon: <Phone size={20} />, label: 'Call Us', value: '+971 54 796 5212', sub: 'Mon–Sat, 8am–8pm' },
-  { icon: <Mail size={20} />, label: 'Email Us', value: 'connect@whiteauralaundry.com', sub: 'We reply within 2 hours' },
+  { icon: <Phone size={20} />, label: 'Call Us', value: '+971 54 796 5212' },
+  { icon: <Mail size={20} />, label: 'Email Us', value: 'connect@whiteauralaundry.com' },
 ];
 
 const contactBreadcrumbSchema = {
@@ -112,6 +113,60 @@ const contactServiceSchema = {
 };
 
 const Contact = () => {
+  const [formState, setFormState] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: ''
+  });
+  const [status, setStatus] = useState({ submitting: false, success: false, error: null });
+
+  const handleChange = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ submitting: true, success: false, error: null });
+
+    try {
+      const response = await fetch('https://formspree.io/f/mgojwnap', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formState)
+      });
+      
+      if (response.ok) {
+        setStatus({ submitting: false, success: true, error: null });
+        setFormState({
+          name: '',
+          company: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        const data = await response.json();
+        setStatus({ 
+          submitting: false, 
+          success: false, 
+          error: data.errors ? data.errors.map(err => err.message).join(', ') : 'Something went wrong.' 
+        });
+      }
+    } catch (err) {
+      setStatus({ submitting: false, success: false, error: 'Failed to send message. Please try again.' });
+    }
+  };
+
   return (
     <AnimatedPage className="contact-page">
       <SEO
@@ -191,7 +246,6 @@ const Contact = () => {
                   <div>
                     <p className="text-xs text-[#7a9e7e] font-semibold tracking-widest uppercase mb-1">{info.label}</p>
                     <p className="font-semibold text-[#1c2b1d] text-sm">{info.value}</p>
-                    <p className="text-xs text-[#2d4a30]/45 mt-0.5">{info.sub}</p>
                   </div>
                 </motion.div>
               ))}
@@ -229,81 +283,119 @@ const Contact = () => {
                   We'd Love to<br /><span className="italic text-[#7a9e7e]">Hear from You.</span>
                 </h2>
 
-                <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-                  <div className="grid grid-cols-2 gap-5">
+                {status.success ? (
+                  <div className="bg-[#7a9e7e]/20 border border-[#7a9e7e] rounded-3xl p-8 text-center text-[#2d4a30]">
+                    <h3 className="font-serif text-2xl font-bold mb-2">Message Sent!</h3>
+                    <p className="text-sm">Thank you for reaching out. We will get back to you shortly.</p>
+                  </div>
+                ) : (
+                  <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+                    {status.error && (
+                      <div className="bg-red-50 text-red-600 border border-red-200 rounded-xl p-4 text-sm">
+                        {status.error}
+                      </div>
+                    )}
+                    <div className="grid grid-cols-2 gap-5">
+                      <div className="flex flex-col gap-2">
+                        <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Contact Name</label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formState.name}
+                          onChange={handleChange}
+                          placeholder="Your name"
+                          required
+                          className="bg-white border border-[#c8dfc9]/70 rounded-xl px-4 py-3.5 text-[#1c2b1d] placeholder-[#2d4a30]/35 text-sm focus:outline-none focus:border-[#7a9e7e] focus:bg-[#fdfcf8] transition-all"
+                        />
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Company Name</label>
+                        <input
+                          type="text"
+                          name="company"
+                          value={formState.company}
+                          onChange={handleChange}
+                          placeholder="Business name"
+                          className="bg-white border border-[#c8dfc9]/70 rounded-xl px-4 py-3.5 text-[#1c2b1d] placeholder-[#2d4a30]/35 text-sm focus:outline-none focus:border-[#7a9e7e] focus:bg-[#fdfcf8] transition-all"
+                        />
+                      </div>
+                    </div>
+
                     <div className="flex flex-col gap-2">
-                      <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Contact Name</label>
+                      <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Email Address</label>
                       <input
-                        type="text"
-                        placeholder="Your name"
+                        type="email"
+                        name="email"
+                        value={formState.email}
+                        onChange={handleChange}
+                        placeholder="name@company.com"
+                        required
                         className="bg-white border border-[#c8dfc9]/70 rounded-xl px-4 py-3.5 text-[#1c2b1d] placeholder-[#2d4a30]/35 text-sm focus:outline-none focus:border-[#7a9e7e] focus:bg-[#fdfcf8] transition-all"
                       />
                     </div>
+
                     <div className="flex flex-col gap-2">
-                      <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Company Name</label>
+                      <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Phone Number</label>
                       <input
-                        type="text"
-                        placeholder="Business name"
+                        type="tel"
+                        name="phone"
+                        value={formState.phone}
+                        onChange={handleChange}
+                        placeholder="+971 54 796 5212"
+                        required
                         className="bg-white border border-[#c8dfc9]/70 rounded-xl px-4 py-3.5 text-[#1c2b1d] placeholder-[#2d4a30]/35 text-sm focus:outline-none focus:border-[#7a9e7e] focus:bg-[#fdfcf8] transition-all"
                       />
                     </div>
-                  </div>
 
-                  <div className="flex flex-col gap-2">
-                    <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Email Address</label>
-                    <input
-                      type="email"
-                      placeholder="name@company.com"
-                      className="bg-white border border-[#c8dfc9]/70 rounded-xl px-4 py-3.5 text-[#1c2b1d] placeholder-[#2d4a30]/35 text-sm focus:outline-none focus:border-[#7a9e7e] focus:bg-[#fdfcf8] transition-all"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Phone Number</label>
-                    <input
-                      type="tel"
-                      placeholder="+971 54 796 5212"
-                      className="bg-white border border-[#c8dfc9]/70 rounded-xl px-4 py-3.5 text-[#1c2b1d] placeholder-[#2d4a30]/35 text-sm focus:outline-none focus:border-[#7a9e7e] focus:bg-[#fdfcf8] transition-all"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Business Service Required</label>
-                    <div className="relative">
-                      <select className="w-full bg-white border border-[#c8dfc9]/70 rounded-xl px-4 py-3.5 text-[#1c2b1d] text-sm focus:outline-none focus:border-[#7a9e7e] focus:bg-[#fdfcf8] transition-all appearance-none cursor-pointer">
-                        <option value="" className="text-[#1c2b1d] bg-white">Select a service…</option>
-                        <option value="uniforms" className="text-[#1c2b1d] bg-white">Staff Uniform Laundry</option>
-                        <option value="hotel-linen" className="text-[#1c2b1d] bg-white">Hotel & Hospitality Linen</option>
-                        <option value="restaurant-linen" className="text-[#1c2b1d] bg-white">Restaurant Linen & Aprons</option>
-                        <option value="salon-spa" className="text-[#1c2b1d] bg-white">Salon, Spa & Towel Laundry</option>
-                        <option value="clinic" className="text-[#1c2b1d] bg-white">Clinic & Office Laundry</option>
-                        <option value="dry" className="text-[#1c2b1d] bg-white">Corporate Dry Cleaning</option>
-                        <option value="scheduled-pickup" className="text-[#1c2b1d] bg-white">Scheduled Pickup & Delivery</option>
-                        <option value="express" className="text-[#1c2b1d] bg-white">Express Business Service</option>
-                        <option value="other" className="text-[#1c2b1d] bg-white">Other</option>
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#2d4a30]/45">▾</div>
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Business Service Required</label>
+                      <div className="relative">
+                        <select
+                          name="service"
+                          value={formState.service}
+                          onChange={handleChange}
+                          required
+                          className="w-full bg-white border border-[#c8dfc9]/70 rounded-xl px-4 py-3.5 text-[#1c2b1d] text-sm focus:outline-none focus:border-[#7a9e7e] focus:bg-[#fdfcf8] transition-all appearance-none cursor-pointer"
+                        >
+                          <option value="" className="text-[#1c2b1d] bg-white">Select a service…</option>
+                          <option value="uniforms" className="text-[#1c2b1d] bg-white">Staff Uniform Laundry</option>
+                          <option value="hotel-linen" className="text-[#1c2b1d] bg-white">Hotel & Hospitality Linen</option>
+                          <option value="restaurant-linen" className="text-[#1c2b1d] bg-white">Restaurant Linen & Aprons</option>
+                          <option value="salon-spa" className="text-[#1c2b1d] bg-white">Salon, Spa & Towel Laundry</option>
+                          <option value="clinic" className="text-[#1c2b1d] bg-white">Clinic & Office Laundry</option>
+                          <option value="dry" className="text-[#1c2b1d] bg-white">Corporate Dry Cleaning</option>
+                          <option value="scheduled-pickup" className="text-[#1c2b1d] bg-white">Scheduled Pickup & Delivery</option>
+                          <option value="express" className="text-[#1c2b1d] bg-white">Express Business Service</option>
+                          <option value="other" className="text-[#1c2b1d] bg-white">Other</option>
+                        </select>
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#2d4a30]/45">▾</div>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="flex flex-col gap-2">
-                    <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Message</label>
-                    <textarea
-                      rows="4"
-                      placeholder="Tell us your business type, estimated laundry volume, pickup frequency, and location."
-                      className="bg-white border border-[#c8dfc9]/70 rounded-xl px-4 py-3.5 text-[#1c2b1d] placeholder-[#2d4a30]/35 text-sm focus:outline-none focus:border-[#7a9e7e] focus:bg-[#fdfcf8] transition-all resize-none"
-                    />
-                  </div>
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#7a9e7e] text-xs font-medium tracking-widest uppercase">Message</label>
+                      <textarea
+                        rows="4"
+                        name="message"
+                        value={formState.message}
+                        onChange={handleChange}
+                        required
+                        placeholder="Tell us your business type, estimated laundry volume, pickup frequency, and location."
+                        className="bg-white border border-[#c8dfc9]/70 rounded-xl px-4 py-3.5 text-[#1c2b1d] placeholder-[#2d4a30]/35 text-sm focus:outline-none focus:border-[#7a9e7e] focus:bg-[#fdfcf8] transition-all resize-none"
+                      />
+                    </div>
 
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="btn-primary w-full justify-center mt-2"
-                    type="submit"
-                  >
-                    Send Message <Send size={18} />
-                  </motion.button>
-                </form>
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="btn-primary w-full justify-center mt-2"
+                      type="submit"
+                      disabled={status.submitting}
+                    >
+                      {status.submitting ? 'Sending...' : 'Send Message'} <Send size={18} />
+                    </motion.button>
+                  </form>
+                )}
               </div>
             </motion.div>
 
