@@ -315,13 +315,15 @@ const Home = () => {
                   variants={fadeUp} initial="hidden" animate="visible" custom={3}
                   className="flex flex-wrap gap-4 mb-14"
                 >
-                  <Link
-                    to="/contact"
+                  <a
+                    href="https://wa.me/971547965212"
+                    target="_blank"
+                    rel="noreferrer"
                     className="btn-primary"
                     aria-label="Book a laundry service pickup in Dubai"
                   >
                     Book Laundry Service <ArrowRight size={18} aria-hidden="true" />
-                  </Link>
+                  </a>
                   <Link
                     to="/services"
                     className="btn-outline"
@@ -553,13 +555,15 @@ const Home = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-                <Link
-                  to="/contact"
+                <a
+                  href="https://wa.me/971547965212"
+                  target="_blank"
+                  rel="noreferrer"
                   aria-label="Book a laundry or dry cleaning service"
                   className="btn-primary"
                 >
                   Book a Service <ArrowRight size={17} aria-hidden="true" />
-                </Link>
+                </a>
                 <Link
                   to="/gallery"
                   aria-label="View our premium cleaning transformations gallery"
@@ -738,13 +742,15 @@ const Home = () => {
               Schedule your first pickup today and experience the White Aura difference — premium dry cleaning and laundry, delivered to your door in Dubai.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link 
-                to="/contact" 
+              <a 
+                href="https://wa.me/971547965212" 
+                target="_blank" 
+                rel="noreferrer"
                 className="btn-primary"
                 aria-label="Schedule a pickup for laundry service with White Aura"
               >
                 Schedule Pickup Now <ArrowRight size={18} />
-              </Link>
+              </a>
               <a 
                 href="tel:+971502524034" 
                 className="btn-outline"

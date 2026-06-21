@@ -315,3 +315,27 @@ h1, h2, h3, .font-serif {
   background: var(--color-mint);
   color: var(--color-forest);
 }
+
+/* ==================== CHATBOT POSITIONING ==================== */
+/* By default (at the top of the page), position the Chatbase bubble above the WhatsApp button (which is at bottom-6 / 24px) */
+#chatbase-bubble-button {
+  bottom: 96px !important;
+  right: 26px !important;
+  transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1), right 0.3s ease !important;
+}
+
+/* When scrolled down, move the Chatbase bubble up further (above WhatsApp at bottom-24 / 96px) */
+body.scrolled-past-threshold #chatbase-bubble-button {
+  bottom: 168px !important;
+}
+
+/* Position the Chatbase conversation window to align nicely above the bubble's respective position */
+#chatbase-bubble-window {
+  bottom: 160px !important;
+  right: 26px !important;
+  transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1), right 0.3s ease !important;
+}
+
+body.scrolled-past-threshold #chatbase-bubble-window {
+  bottom: 232px !important;
+}

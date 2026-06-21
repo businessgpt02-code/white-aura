@@ -227,9 +227,9 @@ const Gallery = () => {
               Book your collection today and let our artisans restore your favorite pieces to their original glory with free pickup in Dubai.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/contact" className="btn-primary">
+              <a href="https://wa.me/971547965212" target="_blank" rel="noreferrer" className="btn-primary">
                 Book a Collection <ArrowRight size={18} />
-              </Link>
+              </a>
               <Link to="/services" className="btn-outline bg-white/50">
                 View Pricing
               </Link>

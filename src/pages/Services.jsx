@@ -293,9 +293,9 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/contact" className="btn-primary inline-flex mt-8">
+              <a href="https://wa.me/971547965212" target="_blank" rel="noreferrer" className="btn-primary inline-flex mt-8">
                 Book a Service <ArrowRight size={18} />
-              </Link>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -351,9 +351,9 @@ const Services = () => {
                   {/* Desc — slides up on hover */}
                   <div className="overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-500">
                     <p className="text-white/70 text-sm leading-relaxed mb-5">{service.desc}</p>
-                    <Link to="/contact" className="inline-flex items-center gap-2 text-[#a8c5aa] text-sm font-semibold hover:gap-3 transition-all">
+                    <a href="https://wa.me/971547965212" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[#a8c5aa] text-sm font-semibold hover:gap-3 transition-all">
                       Book Now <ArrowRight size={16} />
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </motion.div>
@@ -521,12 +521,22 @@ const Services = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-5 w-full lg:w-auto shrink-0">
-                <Link to="/contact" className="px-8 py-4 rounded-full bg-white text-[#5a7a5e] font-semibold flex items-center justify-center gap-2 hover:bg-[#fafaf7] hover:text-[#2d4a30] transition-colors">
+                <a 
+                  href="https://wa.me/971547965212" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="px-8 py-4 rounded-full bg-white text-[#5a7a5e] font-semibold flex items-center justify-center gap-2 hover:bg-[#fafaf7] hover:text-[#2d4a30] transition-colors"
+                >
                   Request a Quote <ArrowRight size={18} />
-                </Link>
-                <Link to="/contact" className="px-8 py-4 rounded-full bg-white/10 text-white border border-white/20 font-semibold flex items-center justify-center hover:bg-white hover:text-[#5a7a5e] transition-colors">
+                </a>
+                <a 
+                  href="https://wa.me/971547965212" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="px-8 py-4 rounded-full bg-white/10 text-white border border-white/20 font-semibold flex items-center justify-center hover:bg-white hover:text-[#5a7a5e] transition-colors"
+                >
                   Contact Support
-                </Link>
+                </a>
               </div>
             </div>
             
@@ -616,14 +626,16 @@ const Services = () => {
             <p className="text-[#2d4a30]/60 text-lg mb-10" itemProp="description">
               Tell us what you need cleaned, and our Dubai garment care team will recommend the best option: washing and folding, premium dry cleaning, ironing, stain removal, curtain cleaning, express service, or door-to-door pickup and delivery.
             </p>
-            <Link
-              to="/contact"
+             <a
+              href="https://wa.me/971547965212"
+              target="_blank"
+              rel="noreferrer"
               className="btn-primary"
               aria-label="Get a laundry and dry cleaning service recommendation in Dubai"
               itemProp="url"
             >
               Get Service Recommendation <ArrowRight size={18} />
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>

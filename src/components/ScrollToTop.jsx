@@ -14,6 +14,7 @@ const ScrollToTop = () => {
       top: 0,
       behavior: 'instant', // Instant scroll on route change for best UX
     });
+    document.body.classList.remove('scrolled-past-threshold');
   }, [pathname]);
 
   // 2. Scroll Progress & Button Visibility
@@ -21,8 +22,10 @@ const ScrollToTop = () => {
     const toggleVisibility = () => {
       if (window.scrollY > 400) {
         setIsVisible(true);
+        document.body.classList.add('scrolled-past-threshold');
       } else {
         setIsVisible(false);
+        document.body.classList.remove('scrolled-past-threshold');
       }
     };
 
