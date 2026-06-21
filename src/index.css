@@ -329,13 +329,15 @@ body.scrolled-past-threshold #chatbase-bubble-button {
   bottom: 168px !important;
 }
 
-/* Position the Chatbase conversation window to align nicely above the bubble's respective position */
-#chatbase-bubble-window {
-  bottom: 160px !important;
-  right: 26px !important;
-  transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1), right 0.3s ease !important;
-}
+/* Position the Chatbase conversation window to align nicely above the bubble's respective position on desktop/tablet */
+@media (min-width: 768px) {
+  #chatbase-bubble-window {
+    bottom: 160px !important;
+    right: 26px !important;
+    transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1), right 0.3s ease !important;
+  }
 
-body.scrolled-past-threshold #chatbase-bubble-window {
-  bottom: 232px !important;
+  body.scrolled-past-threshold #chatbase-bubble-window {
+    bottom: 232px !important;
+  }
 }
