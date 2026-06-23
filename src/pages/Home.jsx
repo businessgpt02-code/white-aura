@@ -304,8 +304,10 @@ const Home = () => {
                 >
                   {[
                     '✓ Free Pickup & Delivery',
+                    '✓ 12-Hour Service',
                     '✓ 24-Hour Express Service',
                     '✓ Eco-Certified Solvents',
+                    '✓ B2B Services Provider',
                   ].map((item) => (
                     <li key={item} className="font-medium">{item}</li>
                   ))}
@@ -322,7 +324,7 @@ const Home = () => {
                     className="btn-primary"
                     aria-label="Book a laundry service pickup in Dubai"
                   >
-                    Book Laundry Service <ArrowRight size={18} aria-hidden="true" />
+                    Book Now <ArrowRight size={18} aria-hidden="true" />
                   </a>
                   <Link
                     to="/services"
