@@ -334,10 +334,12 @@ body.scrolled-past-threshold #chatbase-bubble-button {
   #chatbase-bubble-window {
     bottom: 160px !important;
     right: 26px !important;
+    max-height: calc(100vh - 180px) !important;
     transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1), right 0.3s ease !important;
   }
 
   body.scrolled-past-threshold #chatbase-bubble-window {
     bottom: 232px !important;
+    max-height: calc(100vh - 252px) !important;
   }
 }
